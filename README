@@ -1,0 +1,39 @@
+ISTRUZIONI PER L'USO
+
+usare il makefile per compilare 
+eseguire il server con il comando /.server.out #numerodiporta
+
+una volta eseguito il chat-room server verrà richiesta la modalità di distribuzione dei messaggi.
+inserire fifo o timestamp
+
+fifo: i messaggi verranno inviati in ordine di ricezione del server
+timestamp: i messaggi verranno inviati in ordine di timestamp di invio
+
+eseguire il client con il comando /.client.out #host #numerodiporta
+
+una volta eseguito il client verrà richiesto di inserire un nome con il quale il client verrà identificato nella chat.
+la lunghezza del nome deve essere di almeno 2 e massimo 50 caratteri
+
+per disconnettersi dalla chat digitare exit
+
+il server può accettare massimo 4 connessioni. Ulteriori connessioni verranno chiuse.
+
+il chat-room server rimarrà attivo per altre connessioni.
+Per chiuderlo digitare CTRL+C
+
+TEST EFFETTUATI
+Per accertarmi che la chat funzionasse ho aperto 1,2,3 e 4 connessioni.
+
+In tutti questi casi ho verificato che:
+Ogni messaggio viene visualizzato sulla chat e da tutti gli altri client ad eccezione dell'autore del messaggio.
+Ogni messaggio viene visualizzato con nome dell'autore e timestamp.
+Provando ad inserire nomi di lunghezza indesiderata viene richiesto di ineserire nuovamente il nome
+Provando ad inserire input diversi da fifo o timestamp viene richiesto di inserire nuovamenta la modalità
+inserendo exit o CTRL+C viene chiusa la connessione e gli altri client vengono avvertiti della disconessione
+
+Ho provato ad aprire un quinta connessione e ho verificato che che viene mandato un messaggio di avvertimento e un SIGINT e viene chiusa la connessione.
+
+Provando la modalità timestamp ho verificato che i messaggi venissero inviati in ordine di timestamp dopo un periodo di attesa provando ad inserire 2 e 3 messaggi durante l'attesa.
+
+
+
